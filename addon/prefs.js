@@ -1,2 +1,18 @@
-pref("enable", true);
-pref("input", "This is input");
+pref("defaultSiteId", "chatgpt");
+pref(
+  "globalPromptTemplate",
+  "请基于我上传的论文 PDF 回答问题。\n\n请先给我：\n1. 这篇论文的主题\n2. 核心贡献\n3. 研究方法\n4. 关键结论\n5. 论文可能的局限性\n\n论文信息：\n- 标题：{{title}}\n- 作者：{{authors}}\n- 年份：{{year}}\n- 期刊/会议：{{journal}}\n- 摘要：{{abstract}}\n- 文件名：{{fileName}}\n\n之后请继续围绕这篇论文回答我的后续问题。",
+);
+pref("defaultPromptTemplateId", "default-paper-qa");
+pref(
+  "promptTemplatesJson",
+  '[\n  {\n    "id": "default-paper-qa",\n    "name": "默认论文问答",\n    "content": "请基于我上传的论文 PDF 回答问题。\\n\\n请先给我：\\n1. 这篇论文的主题\\n2. 核心贡献\\n3. 研究方法\\n4. 关键结论\\n5. 论文可能的局限性\\n\\n论文信息：\\n- 标题：{{title}}\\n- 作者：{{authors}}\\n- 年份：{{year}}\\n- 期刊/会议：{{journal}}\\n- 摘要：{{abstract}}\\n- 文件名：{{fileName}}\\n\\n之后请继续围绕这篇论文回答我的后续问题。"\n  }\n]',
+);
+pref(
+  "siteProfilesJson",
+  '[\n  {\n    "id": "chatgpt",\n    "name": "ChatGPT",\n    "url": "https://chatgpt.com/",\n    "ready": "main, form",\n    "optionalNewChatButton": "a[href=\\"/\\"], button[data-testid*=\\"new-chat\\"], a[data-testid*=\\"new-chat\\"], button[aria-label*=\\"New chat\\"], button[aria-label*=\\"新建\\"]",\n    "optionalLocalFileMenuItem": "",\n    "fileInput": "input[type=\\"file\\"]",\n    "promptInput": "textarea, div[contenteditable=\\"true\\"], [contenteditable=\\"true\\"]",\n    "sendButton": "button[data-testid=\\"send-button\\"], button[aria-label*=\\"Send\\"], button[aria-label*=\\"发送\\"]",\n    "optionalUploadButton": "button[aria-label*=\\"Attach\\"], button[aria-label*=\\"Upload\\"], button[aria-label*=\\"Add files\\"], button[aria-label*=\\"添加\\"], button[aria-label*=\\"上传\\"], button[aria-label*=\\"添加文件\\"]",\n    "enabled": true,\n    "isBuiltin": true\n  },\n  {\n    "id": "gemini",\n    "name": "Gemini",\n    "url": "https://gemini.google.com/app",\n    "ready": "main, rich-textarea, textarea",\n    "optionalNewChatButton": "a[href=\\"/app\\"], button[aria-label*=\\"New chat\\"], button[aria-label*=\\"新建\\"], button[mattooltip*=\\"New chat\\"]",\n    "optionalLocalFileMenuItem": "button[data-test-id=\\"local-images-files-uploader-button\\"], button[aria-label*=\\"上传文件. 文档\\"], button[aria-label*=\\"上传文件\\"]",\n    "fileInput": "input[type=\\"file\\"], input[accept*=\\"pdf\\"], input[accept*=\\".pdf\\"]",\n    "promptInput": "rich-textarea textarea, rich-textarea [contenteditable=\\"true\\"], textarea, div[contenteditable=\\"true\\"]",\n    "sendButton": "button[aria-label*=\\"Send\\"], button[aria-label*=\\"发送\\"], button.send-button",\n    "optionalUploadButton": "button[aria-label*=\\"打开文件上传菜单\\"], button[aria-controls=\\"upload-file-menu\\"], button[data-test-id=\\"hidden-local-file-upload-button\\"], button.hidden-local-file-upload-button, button:has(mat-icon[fonticon=\\"add_2\\"]), [role=\\"button\\"]:has(mat-icon[fonticon=\\"add_2\\"])",\n    "enabled": true,\n    "isBuiltin": true\n  },\n  {\n    "id": "notebooklm",\n    "name": "NotebookLM",\n    "url": "https://notebooklm.google.com/",\n    "ready": "main, body",\n    "optionalNewChatButton": "button[aria-label*=\\"Create\\"], button[aria-label*=\\"Notebook\\"], button[aria-label*=\\"新建\\"], a[href*=\\"/notebook\\"]",\n    "optionalLocalFileMenuItem": "button[xapscottyuploadertrigger], button.drop-zone-icon-button, button[aria-label*=\\"上传文件\\"], button[aria-label*=\\"Upload file\\"], button[aria-label*=\\"Upload\\"]",\n    "fileInput": "input[type=\\"file\\"], input[accept*=\\"pdf\\"], input[accept*=\\".pdf\\"]",\n    "promptInput": "textarea, div[contenteditable=\\"true\\"], [contenteditable=\\"true\\"], input[type=\\"text\\"]",\n    "sendButton": "button[aria-label*=\\"Send\\"], button[aria-label*=\\"发送\\"], button[type=\\"submit\\"]",\n    "optionalUploadButton": "button[aria-label*=\\"打开“上传来源”对话框\\"], button[aria-label*=\\"添加来源\\"], button[aria-label*=\\"上传来源\\"], button[aria-label*=\\"Add source\\"], button[title*=\\"Add source\\"]",\n    "enabled": true,\n    "isBuiltin": true\n  }\n]',
+);
+pref("chromeAppPath", "/Applications/Google Chrome.app");
+pref("confirmBeforeSend", true);
+pref("fillPromptEnabled", true);
+pref("showUsageHints", true);

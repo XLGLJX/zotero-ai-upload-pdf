@@ -7,8 +7,15 @@
 declare namespace _ZoteroTypes {
   interface Prefs {
     PluginPrefsMap: {
-      "enable": boolean;
-      "input": string;
+      "defaultSiteId": string;
+      "globalPromptTemplate": string;
+      "defaultPromptTemplateId": string;
+      "promptTemplatesJson": string;
+      "siteProfilesJson": string;
+      "chromeAppPath": string;
+      "confirmBeforeSend": boolean;
+      "fillPromptEnabled": boolean;
+      "showUsageHints": boolean;
     };
   }
 }

@@ -1,31 +1,239 @@
 <linkset>
   <html:link rel="localization" href="__addonRef__-preferences.ftl" />
 </linkset>
-<groupbox
-  onload="Zotero.__addonInstance__.hooks.onPrefsEvent('load', { window })"
+<vbox
+  id="__addonRef__-prefs-root"
+  flex="1"
+  style="display: flex; flex-direction: column; gap: 12px; padding: 8px 0"
 >
   <label><html:h2 data-l10n-id="pref-title"></html:h2></label>
-  <checkbox
-    id="zotero-prefpane-__addonRef__-enable"
-    preference="enable"
-    data-l10n-id="pref-enable"
-  />
-  <hbox>
-    <html:label
-      for="zotero-prefpane-__addonRef__-input"
-      data-l10n-id="pref-input"
-    ></html:label>
-    <html:input
-      type="text"
-      id="zotero-prefpane-__addonRef__-input"
-      preference="input"
-    ></html:input>
-  </hbox>
-  <hbox class="virtualized-table-container" flex="1" height="300px">
-    <html:div id="__addonRef__-table-container" />
-  </hbox>
-</groupbox>
-<vbox>
+  <description data-l10n-id="pref-summary" />
+
+  <groupbox>
+    <label><html:h3 data-l10n-id="pref-general-title"></html:h3></label>
+    <html:div style="display: flex; flex-direction: column; gap: 8px">
+      <html:label
+        for="__addonRef__-default-site"
+        data-l10n-id="pref-default-site"
+      ></html:label>
+      <html:select id="__addonRef__-default-site"></html:select>
+
+      <html:label
+        for="__addonRef__-chrome-app-path"
+        data-l10n-id="pref-chrome-app-path"
+      ></html:label>
+      <html:input type="text" id="__addonRef__-chrome-app-path" />
+
+      <html:label
+        for="__addonRef__-default-prompt-template"
+        data-l10n-id="pref-default-prompt-template"
+      ></html:label>
+      <html:select id="__addonRef__-default-prompt-template"></html:select>
+
+      <html:label style="display: flex; gap: 8px; align-items: center">
+        <html:input type="checkbox" id="__addonRef__-confirm-before-send" />
+        <html:span data-l10n-id="pref-confirm-before-send"></html:span>
+      </html:label>
+
+      <html:label style="display: flex; gap: 8px; align-items: center">
+        <html:input type="checkbox" id="__addonRef__-show-usage-hints" />
+        <html:span data-l10n-id="pref-show-usage-hints"></html:span>
+      </html:label>
+
+      <html:div style="display: flex; gap: 8px; flex-wrap: wrap">
+        <html:button
+          id="__addonRef__-save-settings"
+          data-l10n-id="pref-save-settings"
+        ></html:button>
+        <html:button
+          id="__addonRef__-test-connection"
+          data-l10n-id="pref-test-connection"
+        ></html:button>
+      </html:div>
+    </html:div>
+  </groupbox>
+
+  <groupbox>
+    <label
+      ><html:h3 data-l10n-id="pref-prompt-templates-title"></html:h3
+    ></label>
+    <html:div style="display: flex; gap: 16px; align-items: flex-start">
+      <html:div
+        style="
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          min-width: 220px;
+        "
+      >
+        <html:label
+          for="__addonRef__-prompt-template-list"
+          data-l10n-id="pref-prompt-template-list"
+        ></html:label>
+        <html:select
+          id="__addonRef__-prompt-template-list"
+          size="6"
+        ></html:select>
+        <html:div style="display: flex; gap: 8px; flex-wrap: wrap">
+          <html:button
+            id="__addonRef__-new-prompt-template"
+            data-l10n-id="pref-new-prompt-template"
+          ></html:button>
+          <html:button
+            id="__addonRef__-delete-prompt-template"
+            data-l10n-id="pref-delete-prompt-template"
+          ></html:button>
+        </html:div>
+      </html:div>
+
+      <html:div
+        style="display: flex; flex-direction: column; gap: 8px; flex: 1"
+      >
+        <html:label
+          for="__addonRef__-prompt-template-name"
+          data-l10n-id="pref-prompt-template-name"
+        ></html:label>
+        <html:input type="text" id="__addonRef__-prompt-template-name" />
+
+        <html:label
+          for="__addonRef__-prompt-template-content"
+          data-l10n-id="pref-prompt-template-content"
+        ></html:label>
+        <html:textarea
+          id="__addonRef__-prompt-template-content"
+          rows="12"
+        ></html:textarea>
+
+        <html:div style="display: flex; gap: 8px; flex-wrap: wrap">
+          <html:button
+            id="__addonRef__-save-prompt-template"
+            data-l10n-id="pref-save-prompt-template"
+          ></html:button>
+        </html:div>
+      </html:div>
+    </html:div>
+  </groupbox>
+
+  <groupbox>
+    <label><html:h3 data-l10n-id="pref-profiles-title"></html:h3></label>
+    <html:div style="display: flex; gap: 16px; align-items: flex-start">
+      <html:div
+        style="
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          min-width: 220px;
+        "
+      >
+        <html:label
+          for="__addonRef__-profile-list"
+          data-l10n-id="pref-site-list"
+        ></html:label>
+        <html:select id="__addonRef__-profile-list" size="8"></html:select>
+        <html:div style="display: flex; gap: 8px; flex-wrap: wrap">
+          <html:button
+            id="__addonRef__-new-profile"
+            data-l10n-id="pref-new-profile"
+          ></html:button>
+          <html:button
+            id="__addonRef__-delete-profile"
+            data-l10n-id="pref-delete-profile"
+          ></html:button>
+        </html:div>
+      </html:div>
+
+      <html:div
+        style="display: flex; flex-direction: column; gap: 8px; flex: 1"
+      >
+        <html:label
+          for="__addonRef__-profile-id"
+          data-l10n-id="pref-profile-id"
+        ></html:label>
+        <html:input type="text" id="__addonRef__-profile-id" />
+
+        <html:label
+          for="__addonRef__-profile-name"
+          data-l10n-id="pref-profile-name"
+        ></html:label>
+        <html:input type="text" id="__addonRef__-profile-name" />
+
+        <html:label
+          for="__addonRef__-profile-url"
+          data-l10n-id="pref-profile-url"
+        ></html:label>
+        <html:input type="text" id="__addonRef__-profile-url" />
+
+        <html:label style="display: flex; gap: 8px; align-items: center">
+          <html:input type="checkbox" id="__addonRef__-profile-enabled" />
+          <html:span data-l10n-id="pref-profile-enabled"></html:span>
+        </html:label>
+
+        <html:label
+          for="__addonRef__-profile-ready"
+          data-l10n-id="pref-profile-ready"
+        ></html:label>
+        <html:input type="text" id="__addonRef__-profile-ready" />
+
+        <html:label
+          for="__addonRef__-profile-new-chat-button"
+          data-l10n-id="pref-profile-new-chat-button"
+        ></html:label>
+        <html:input type="text" id="__addonRef__-profile-new-chat-button" />
+
+        <html:label
+          for="__addonRef__-profile-local-file-menu-item"
+          data-l10n-id="pref-profile-local-file-menu-item"
+        ></html:label>
+        <html:input
+          type="text"
+          id="__addonRef__-profile-local-file-menu-item"
+        />
+
+        <html:label
+          for="__addonRef__-profile-upload-button"
+          data-l10n-id="pref-profile-upload-button"
+        ></html:label>
+        <html:input type="text" id="__addonRef__-profile-upload-button" />
+
+        <html:label
+          for="__addonRef__-profile-file-input"
+          data-l10n-id="pref-profile-file-input"
+        ></html:label>
+        <html:input type="text" id="__addonRef__-profile-file-input" />
+
+        <html:label
+          for="__addonRef__-profile-prompt-input"
+          data-l10n-id="pref-profile-prompt-input"
+        ></html:label>
+        <html:input type="text" id="__addonRef__-profile-prompt-input" />
+
+        <html:label
+          for="__addonRef__-profile-send-button"
+          data-l10n-id="pref-profile-send-button"
+        ></html:label>
+        <html:input type="text" id="__addonRef__-profile-send-button" />
+
+        <html:div style="display: flex; gap: 8px; flex-wrap: wrap">
+          <html:button
+            id="__addonRef__-save-profile"
+            data-l10n-id="pref-save-profile"
+          ></html:button>
+        </html:div>
+      </html:div>
+    </html:div>
+  </groupbox>
+
+  <groupbox>
+    <label><html:h3 data-l10n-id="pref-usage-title"></html:h3></label>
+    <html:ol>
+      <html:li data-l10n-id="pref-usage-step1"></html:li>
+      <html:li data-l10n-id="pref-usage-step2"></html:li>
+      <html:li data-l10n-id="pref-usage-step3"></html:li>
+      <html:li data-l10n-id="pref-usage-step4"></html:li>
+    </html:ol>
+    <description data-l10n-id="pref-extension-note" />
+  </groupbox>
+
   <html:label
     data-l10n-id="pref-help"
     data-l10n-args='{"time": "__buildTime__","name": "__addonName__","version":"__buildVersion__"}'

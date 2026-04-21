@@ -1,6 +1,7 @@
 import { config } from "../package.json";
-import { ColumnOptions, DialogHelper } from "zotero-plugin-toolkit";
+import { DialogHelper } from "zotero-plugin-toolkit";
 import hooks from "./hooks";
+import { PromptTemplate, SiteProfile } from "./services/types";
 import { createZToolkit } from "./utils/ztoolkit";
 
 class Addon {
@@ -16,8 +17,16 @@ class Addon {
     };
     prefs?: {
       window: Window;
-      columns: Array<ColumnOptions>;
-      rows: Array<{ [dataKey: string]: string }>;
+      selectedProfileId?: string;
+      profiles?: SiteProfile[];
+      selectedPromptTemplateId?: string;
+      promptTemplates?: PromptTemplate[];
+    };
+    webAI?: {
+      itemMenuRegistered: boolean;
+      promptRegistered: boolean;
+      readerMenuRegistered: boolean;
+      readerMenuHandler?: (event: any) => void;
     };
     dialog?: DialogHelper;
   };
@@ -33,6 +42,11 @@ class Addon {
       env: __env__,
       initialized: false,
       ztoolkit: createZToolkit(),
+      webAI: {
+        itemMenuRegistered: false,
+        promptRegistered: false,
+        readerMenuRegistered: false,
+      },
     };
     this.hooks = hooks;
     this.api = {};
